@@ -256,10 +256,16 @@ ozpIwc.Client = (function (util) {
             //-----------------------------------------
             var sharedWorkerLauncher = function (data, inFlightIntent) {
                 var cfg = data.entity || {};
-                util.openWindow(cfg.url, {
-                    "ozpIwc.peer": client.peerUrl,
-                    "ozpIwc.inFlightIntent": inFlightIntent.resource
-                });
+
+                if (window === window.top || cfg.launchData.openInNewWindow) {
+                    util.openWindow(cfg.url, {
+                        "ozpIwc.peer": client.peerUrl,
+                        "ozpIwc.inFlightIntent": inFlightIntent.resource
+                    });
+                } else {
+                    client.intents().Reference('/application/iwc.internal/open')
+                        .broadcast(data);
+                }
                 return {intentIncomplete: true};
             };
             var launcherResource = '/application/vnd.ozp-iwc-launch-data-v1+json/run/' + client.address;
