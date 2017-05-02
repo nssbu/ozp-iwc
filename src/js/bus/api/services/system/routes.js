@@ -112,16 +112,27 @@ ozpIwc.api.system.Api = (function (api, SystemApi, log, ozpConfig, util) {
     }, function (packet, context, pathParams) {
         log.debug(this.logPrefix + " handling launch data ", packet.entity);
         if (packet.entity && packet.entity.inFlightIntent) {
-            util.openWindow(packet.entity.inFlightIntent.entity.entity.url, {
-                "ozpIwc.peer": ozpConfig._busRoot,
-                "ozpIwc.inFlightIntent": packet.entity.inFlightIntent.resource
-            });
+            launchWindow(packet);
             return {'response': "ok"};
         } else {
             return {'response': "badResource"};
         }
-
     });
+
+    function launchWindow(packet) {
+        var cfg = data.entity || {};
+
+        if (window === window.top || cfg.launchData.openInNewWindow) {
+            util.openWindow(packet.entity.inFlightIntent.entity.entity.url, {
+                "ozpIwc.peer": ozpConfig._busRoot,
+                "ozpIwc.inFlightIntent": packet.entity.inFlightIntent.resource
+            });
+        } else {
+            client.intents()
+                .Reference('/application/iwc.internal/open')
+                .broadcast(data);
+        }
+    }
 
     return SystemApi;
 }(ozpIwc.api, ozpIwc.api.system.Api || {}, ozpIwc.log, ozpIwc.config, ozpIwc.util));
