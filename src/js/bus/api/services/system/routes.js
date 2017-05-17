@@ -129,9 +129,8 @@ ozpIwc.api.system.Api = (function (api, SystemApi, log, ozpConfig, util) {
                 "ozpIwc.inFlightIntent": inFlightIntent.resource
             });
         } else {
-            this.participant.intents()
-                .Reference('/application/iwc.internal/open')
-                .broadcast(data);
+            var ref = new this.participant.intents.Reference('/application/iwc.internal/open');
+            ref.broadcast(data);
         }
     }
 
