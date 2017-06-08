@@ -1,0 +1,5 @@
+"Version: launch-in-webtop" 
+"Git hash: " 
+936f850a1bf196dc820351d0876ea4a46bc3ce74
+Date: 
+2017-06-08 14:17:10 -0400
