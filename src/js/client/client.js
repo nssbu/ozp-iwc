@@ -264,7 +264,10 @@ ozpIwc.Client = (function (util) {
                     });
                 } else {
                     var ref = new client.intents.Reference('/application/iwc.internal/open');
-                    ref.broadcast(data);
+                    ref.broadcast({
+                        data: data,
+                        inFlightIntent: inFlightIntent
+                    });
                 }
                 return {intentIncomplete: true};
             };

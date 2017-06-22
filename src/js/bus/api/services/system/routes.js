@@ -130,7 +130,10 @@ ozpIwc.api.system.Api = (function (api, SystemApi, log, ozpConfig, util) {
             });
         } else {
             var ref = new this.participant.intents.Reference('/application/iwc.internal/open');
-            ref.broadcast(data);
+            ref.broadcast({
+                data: data,
+                inFlightIntent: inFlightIntent
+            });
         }
     }
 
