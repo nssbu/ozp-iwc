@@ -28,9 +28,9 @@
     "bootstrap": "~3.3.1",
     "vis": "~3.9",
     "es5-shim": "~4.1.0",
-    "hal-browser": "nssbu/hal-browser",
-    "ozp-demo": "nssbu/ozp-demo",
-    "ozp-iwc-owf7-widget-adapter": "nssbu/ozp-iwc-owf7-widget-adapter",
+    "hal-browser": "git://github.com/nssbu/hal-browser",
+    "ozp-demo": "git://github.com/nssbu/ozp-demo",
+    "ozp-iwc-owf7-widget-adapter": "git://github.com/nssbu/ozp-iwc-owf7-widget-adapter",
     "angular-ui-router": "~0.2.13",
     "angular-ui-grid": "3.0.0-rc.20"
   },
