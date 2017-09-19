@@ -8,3 +8,5 @@ components/backend/db/
 bower_components
 dist
 *.tar.gz
+/.settings/
+/.project
