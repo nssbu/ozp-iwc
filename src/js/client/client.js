@@ -257,6 +257,15 @@ ozpIwc.Client = (function (util) {
             var sharedWorkerLauncher = function (data, inFlightIntent) {
                 var cfg = data.entity || {};
 
+                //TODO: Pick a version below.
+
+                //AML version
+                //util.openWindow(cfg.url, {
+                //    "ozpIwc.peer": client.peerUrl,
+                //    "ozpIwc.inFlightIntent": inFlightIntent.resource
+                //});
+
+                //Viztronix version
                 if (window === window.top || cfg.launchData.openInNewWindow) {
                     util.openWindow(cfg.url, {
                         "ozpIwc.peer": client.peerUrl,
