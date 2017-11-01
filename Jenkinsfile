@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                  npm install -g bower grunt-cli
+                  sudo npm install -g bower grunt-cli
                   npm install; npm run bower; npm run build; npm run tarDate
                   mv *.tar.gz iwc.tar.gz
                 '''
