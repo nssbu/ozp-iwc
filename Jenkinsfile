@@ -22,5 +22,10 @@ pipeline {
                 '''
             }
         }
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: 'iwc.tar.gz'
+            }
+        }
     }
 }
