@@ -4345,12 +4345,12 @@ ozpIwc.util.ApiPromiseMixin = (function (apiMap, log, util) {
      */
     var intentRegisterAugment = function (client, message) {
         for (var i in client.launchedIntents) {
-            if (client.launchedIntents[i].entity) {
-              var loadedResource = '/' + client.launchedIntents[i].entity.intent.type + '/' + client.launchedIntents[i].entity.intent.action;
-              if (message.packet.resource === loadedResource) {
-                  client.intentInvocationHandling(message.packet, client.launchedIntents[i], message.callback);
-                  delete client.launchedIntents[i];
-              }
+            if(client.launchedIntents[i].entity){
+                var loadedResource = '/' + client.launchedIntents[i].entity.intent.type + '/' + client.launchedIntents[i].entity.intent.action;
+                if (message.packet.resource === loadedResource) {
+                    client.intentInvocationHandling(message.packet, client.launchedIntents[i], message.callback);
+                    delete client.launchedIntents[i];
+                }
             }
         }
     };
