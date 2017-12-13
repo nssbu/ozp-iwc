@@ -112,22 +112,11 @@ ozpIwc.api.system.Api = (function (api, SystemApi, log, ozpConfig, util) {
     }, function (packet, context, pathParams) {
         log.debug(this.logPrefix + " handling launch data ", packet.entity);
         if (packet.entity && packet.entity.inFlightIntent) {
-            
-            //TODO: Pick a version below.
-
-            //AML version
-            //util.openWindow(packet.entity.inFlightIntent.entity.entity.url, {
-            //    "ozpIwc.peer": ozpConfig._busRoot,
-            //    "ozpIwc.inFlightIntent": packet.entity.inFlightIntent.resource
-            //});
-
-            //Vistronix version
             launchWindow(packet.entity.inFlightIntent);
             return {'response': "ok"};
         } else {
             return {'response': "badResource"};
         }
-
     });
 
     function launchWindow(inFlightIntent) {
